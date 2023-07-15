@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Akıllı Ev Kontrol Paneli</title>
+</head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-success">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+<body>
+    <h1>Akıllı Ev Kontrol Paneli</h1>
+    <h2>Salon Işığı: {% if akilli_ev.salon_isik %}Açık{% else %}Kapalı{% endif %}</h2>
+    <form method="POST" action="/">
+        <button type="submit" name="salon_isik" value="ac" {% if akilli_ev.salon_isik %}disabled{% endif %}>Aç</button>
+        <button type="submit" name="salon_isik" value="kapat" {% if not akilli_ev.salon_isik %}disabled{% endif %}>Kapat</button>
+    </form>
+    <h2>Mutfak Işığı: {% if akilli_ev.mutfak_isik %}Açık{% else %}Kapalı{% endif %}</h2>
+    <form method="POST" action="/">
+        <button type="submit" name="mutfak_isik" value="ac" {% if akilli_ev.mutfak_isik %}disabled{% endif %}>Aç</button>
+        <button type="submit" name="mutfak_isik" value="kapat" {% if not akilli_ev.mutfak_isik %}disabled{% endif %}>Kapat</button>
+    </form>
+    <h2>Yatak Odası Işığı: {% if akilli_ev.yatak_odasi_isik %}Açık{% else %}Kapalı{% endif %}</h2>
+    <form method="POST" action="/">
+        <button type="submit" name="yatak_odasi_isik" value="ac" {% if akilli_ev.yatak_odasi_isik %}disabled{% endif %}>Aç</button>
+        <button type="submit" name="yatak_odasi_isik" value="kapat" {% if not akilli_ev.yatak_odasi_isik %}disabled{% endif %}>Kapat</button>
+    </form>
+    <h2>Kapı Durumu: {% if akilli_ev.kapi_kilit %}Kilitli{% else %}Açık{% endif %}</h2>
+    <form method="POST" action="/">
+        <button type="submit" name="kapi_kilit" value="ac" {% if akilli_ev.kapi_kilit %}disabled{% endif %}>Kilitle</button>
+        <button type="submit" name="kapi_kilit" value="kapat" {% if not akilli_ev.kapi_kilit %}disabled{% endif %}>Aç</button>
+    </form>
+    <h2>Klima Durumu: {% if akilli_ev.klima_durumu %}Açık{% else %}Kapalı{% endif %}</h2>
+    <form method="POST" action="/">
+        <button type="submit" name="klima_durumu" value="ac" {% if akilli_ev.klima_durumu %}disabled{% endif %}>Aç</button>
+        <button type="submit" name="klima_durumu" value="kapat" {% if not akilli_ev.klima_durumu %}disabled{% endif %}>Kapat</button>
+    </form>
+</body>
+</html>
